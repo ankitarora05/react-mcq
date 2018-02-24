@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../App.css';
 
-class App extends Component {
+class Header extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">UpGrad</h1>
+          <h1 className="App-title">Up<span>G</span>rad</h1>
         </header>
       </div>
     );
   }
 }
 
-export default App;
+export default Header;
