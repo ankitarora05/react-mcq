@@ -13,6 +13,11 @@
   font-size: 1.6em;
 }
 
+.App-header a {
+  text-decoration: none;
+  color: #444;
+}
+
 .App-title {
   font-size: 1.5em;
   margin: 0;
@@ -413,6 +418,50 @@
   color: #777;
 }
 
+.Student-list {
+  max-width: 960px;
+  margin: 2em auto;
+}
+
+.Student-list .Page-title {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1em;
+}
+
+.Student-list .sub-title {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 1em;
+}
+
+.Student-list .list-container {
+
+}
+
+.Student-list .list-container ul.student-list {
+  list-style-type: none;
+  padding-left: 0;
+  display: inline-block;
+}
+
+.Student-list .list-container ul.student-list li {
+  margin-bottom: 1em; 
+  cursor: pointer;
+  color: #03a9f4;
+}
+
+.Assigned-Questions-list {
+  display: block;
+  max-width: 960px;
+  margin: 2em auto;
+}
+
+.Assigned-Questions-list .Page-title {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1em;
+}
 
 @media (max-width: 960px) {
     .Login-box .Login-container {

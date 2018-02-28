@@ -10,6 +10,7 @@ import CreateMCQ from './Components/QuestionBuilder/CreateMCQ.js';
 import CreateSubmission from './Components/QuestionBuilder/CreateSubmission.js';
 import CreatePassage from './Components/QuestionBuilder/CreateTextQuestion.js';
 import ErrorComponent from './Components/NotFound/404.js';
+import AssignedQuestions from './Components/AssignedQuestions/AssignedQuestions.js';
 
 const Routes = (props) => (
     <Router {...props}>
@@ -24,6 +25,7 @@ const Routes = (props) => (
                 <Route path="/QuestionBuilder/CreateMCQ" component={CreateMCQ} />
                 <Route path="/QuestionBuilder/CreateSubmission" component={CreateSubmission} />
                 <Route path="/QuestionBuilder/CreatePassage" component={CreatePassage} />
+                <Route path="/AssignedQuestions/:id" component={AssignedQuestions}/>
                 <Route path="/AnswerQuestion" component={AnswerQuestion} />
                 <Route component={ErrorComponent} />
             </Switch>
