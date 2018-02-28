@@ -107,10 +107,15 @@
   color: #ff9494;
 }
 
+.Active-stundent {
+  display: block;
+  margin: 1em 0;
+}
+
 .Secondary-btn {
   background: #fafafa;
-  border: 1px solid #afafaf;
-  color: #afafaf;
+  border: 1px solid #4990e2;
+  color: #4990e2;
   outline: none;
   border-radius: 4px;
   font-size: 1.1em;
@@ -168,8 +173,25 @@
 .Main-question-list .Header-bar .assign-box .assign-text {
   flex: 1;
   align-self: center; 
-  color: #777;
+  color: #777;  
+  display: flex;
 }
+
+.Main-question-list .Header-bar .assign-box .assign-text .text-title {
+  align-self: center;
+}
+
+.Main-question-list .Header-bar .assign-box .assign-text .Student-drop {
+  flex: 1;
+  margin-right: 1em;
+  text-align: right;
+}
+
+.Main-question-list .Header-bar .assign-box .assign-text .Student-drop select {
+  height: 3em;
+}
+
+
 
 .Main-question-list .Selection-rows {
   display: flex;
@@ -241,6 +263,36 @@
 .Main-question-list .Selection-rows .course-info-bar .question-type-col .sub-title {
   font-size: 0.9em;
   color: #777;
+}
+
+.Question-builder {
+  max-width: 960px;
+  margin: 2em auto;
+}
+
+.Question-builder .title {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.Question-builder .sub-title {
+  font-size: 1.1em;
+  color: #777;
+  margin-bottom: 1em;
+}
+
+.Question-builder .radio-group {
+  display: block;
+}
+
+.Question-builder .radio-group .radio-row {
+  margin-bottom: 0.5em;
+}
+
+.Question-builder .radio-group .radio-row label input[type="radio"] {
+  margin-right: 0.5em;
 }
 
 
