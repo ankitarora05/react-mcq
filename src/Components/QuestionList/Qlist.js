@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 class QuestionList extends Component {
     constructor(props) {
         super(props);
@@ -182,7 +183,7 @@ class QuestionList extends Component {
                             </div>
                             <div className="Button-container">
                                 <button className="Primary-btn mar-1">Assign</button>
-                                <button className="Secondary-btn">Author New Question</button>
+                                <Link to="/QuestionBuilder"><button className="Secondary-btn">Author New Question</button></Link>
                             </div>
                         </div>
                     </div>

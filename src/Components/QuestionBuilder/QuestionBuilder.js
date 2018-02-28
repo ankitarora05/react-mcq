@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import CreateMCQ from './CreateMCQ.js';
-import CreateSubmission from './CreateSubmission.js';
-import CreatePassage from './CreateTextQuestion.js';
+import { Redirect } from 'react-router-dom';
+
 
 class QuestionBuilder extends Component {
     constructor(props) {
@@ -20,11 +18,11 @@ class QuestionBuilder extends Component {
     }
     render() {
         if (this.state.activeState === 'MCQ') {
-            return <Redirect push to="/QuestionBuilder/CreateMCQ" />;
+            return <Redirect push={true} to="/QuestionBuilder/CreateMCQ"/>;
         } else if (this.state.activeState === 'Passage') {
-            return <Redirect push to="/QuestionBuilder/CreatePassage" />;
+            return <Redirect push={true} to="/QuestionBuilder/CreatePassage"/>;
         } else if (this.state.activeState === 'Submission') {
-            return <Redirect push to="/QuestionBuilder/CreateSubmission" />;
+            return <Redirect push={true} to="/QuestionBuilder/CreateSubmission" />;
         } else {
             return (
                 <div className="Question-builder">
@@ -38,7 +36,7 @@ class QuestionBuilder extends Component {
                         <div className="radio-row">
                             <label>
                                 <input type="radio" value="MCQ" name="question-type" onChange={this.handleQuestionCreationRadio.bind(this)} /> Multiple Choice Question
-                </label>
+                            </label>
                         </div>
                         <div className="radio-row">
                             <label>
@@ -51,16 +49,6 @@ class QuestionBuilder extends Component {
                 </label>
                         </div>
                     </div>
-
-                    <Router>
-                        <div>
-                            <Switch>
-                                <Route path="/QuestionBuilder/CreateMCQ" component={CreateMCQ} />
-                                <Route path="/QuestionBuilder/CreateSubmission" component={CreateSubmission} />
-                                <Route path="/QuestionBuilder/CreatePassage" component={CreatePassage} />
-                            </Switch>
-                        </div>
-                    </Router>
                 </div>
             );
         }

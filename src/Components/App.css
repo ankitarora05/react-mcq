@@ -295,6 +295,124 @@
   margin-right: 0.5em;
 }
 
+.Main-question-box {
+
+}
+
+.Main-question-box .Question-box {
+  max-width: 960px;
+  margin: 2em auto;
+  min-height: 70vh;
+}
+
+.Main-question-box .Question-box .Page-title {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1em;
+}
+
+.Main-question-box .Question-box .Question-title {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 0.5em;
+}
+
+.Main-question-box .Question-box .input-holder {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.Main-question-box .Question-box .MCQ-Creater {
+  display: flex;
+}
+
+.Main-question-box .Question-box .MCQ-Creater .mcq-title {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 0.5em;
+  display: inline-block;
+}
+
+.input-check-holder {
+  margin-bottom: 2em;
+  clear: both;
+}
+
+.input-check-holder input[type="text"] {
+  height: 3em;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #dedede;
+  background: #f5f4f4;
+  text-indent: 1em; 
+  width: 87%;
+}
+
+.input-check-holder input[type="checkbox"] {
+  align-self: center;
+  float: right;
+  margin-bottom: 1em;
+  margin-right: 3em;
+  margin-top: 0.7em;
+  height: 2em;
+  width: 2em;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+.Main-question-box .Question-box .MCQ-Creater .MCQ-options {
+  flex: 8;
+}
+
+.Main-question-box .Question-box .MCQ-Creater  .MCQ-Answers {
+  flex: 1;
+}
+
+.Main-question-box .Question-box .MCQ-Creater  .MCQ-Answers .ans-title {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.Main-question-box .Question-box .input-holder input[type="text"] {
+  flex: 1;
+  height: 3em;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #dedede;
+  background: #f5f4f4;
+  text-indent: 1em;
+}
+
+.Main-question-box  .Question-footer {
+  background: #f5f4f4;
+  border-top: 1px solid #dedede;
+  padding: 2em 0;
+}
+
+.Main-question-box  .Question-footer .Footer-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Main-question-box  .Question-footer .Footer-container .footer-text {
+  flex: 1;
+  align-self: center;
+  font-size: 0.8em;
+  color: #777;
+}
+
 
 @media (max-width: 960px) {
     .Login-box .Login-container {
