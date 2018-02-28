@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Link to ="/"><h1 className="App-title">Up<span>G</span>rad</h1></Link>
+          <Link to ="/"><div className="App-title">Up<span>G</span>rad</div></Link>
         </header>
       </div>
     );

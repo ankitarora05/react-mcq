@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 let studentMapObject = []
-if(localStorage.getItem('studentMap')) {
+if(localStorage.getItem('studentMap') !== "undefined") {
     studentMapObject = JSON.parse(localStorage.getItem('studentMap'));
 } else {
     studentMapObject = [{
@@ -58,15 +58,15 @@ class StudentList extends Component {
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount(){
         this.setState({
             studentList: JSON.parse(localStorage.getItem('studentMap'))
         });
     }
     render() {
-        const studentList = this.state.studentList.map(function(item){
+        const studentList = this.state.studentList.map((item)=>{
             return (
-                <Link to={`AssignedQuestions/${item.id}`} key={item.id}><li className="list-item" key={item.id}>{item.name}</li></Link>
+                <Link to={`AssignedQuestions/${item.id}`} key={item.id}><li className="list-item" key={item.id}>{item.name}({item.questions.length})</li></Link>
             )
         });
         return (

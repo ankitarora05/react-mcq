@@ -7,7 +7,11 @@ class QuestionList extends Component {
             questionList: [],
             studentMap: [],
             allSelected: false,
-            activeStudent: ''
+            activeStudent: '',
+            userAssignError: false,
+            noSelectionError: false,
+            tempQuestionArray: [],
+            assignSuccess: false
         }
     };
 
@@ -69,7 +73,7 @@ class QuestionList extends Component {
 
         const studentMapObject = [{
             'id': 1,
-            'name': 'Ankit',
+            'name': 'Akshay',
             'questions': []
         }, {
             'id': 2,
@@ -85,7 +89,7 @@ class QuestionList extends Component {
             'questions': []
         }, {
             'id': 5,
-            'name': 'Hitpreet',
+            'name': 'Rahul',
             'questions': []
         }, {
             'id': 6,
@@ -97,7 +101,7 @@ class QuestionList extends Component {
             'questions': []
         }, {
             'id': 8,
-            'name': 'Arvind',
+            'name': 'Shivani',
             'questions': []
         }, {
             'id': 9,
@@ -113,21 +117,55 @@ class QuestionList extends Component {
             questionList: questionObject,
             studentMap: studentMapObject
         });
-        this.singleCheckBoxSelection = this.singleCheckBoxSelection.bind(this);
-    }
+    };
 
-    singleCheckBoxSelection(e, index) {
-        const questions = this.state.questionList;
-
-        questions[index]['isChecked'] = !questions[index]['isChecked'];
-
+    singleCheckBoxSelection = (e) =>{
+        let selectedQuetionIndex = e.target.value;
+        if(this.state.activeStudent === '') {
+            this.setState({
+                userAssignError: true
+            });
+            return;
+        }
+        let questions = this.state.questionList;
+        let selectedQuestion = this.state.questionList[selectedQuetionIndex  - 1];
+        questions[selectedQuetionIndex - 1]['isChecked'] = !questions[selectedQuetionIndex - 1]['isChecked'];
         this.setState({
-            questionList: questions
+            questionList: questions,
+            tempQuestionArray: [...this.state.tempQuestionArray, selectedQuestion],
+            noSelectionError: false
         });
     };
 
+    assginQuestions = () => {
+        if(this.state.tempQuestionArray.length === 0) {
+            this.setState({
+                noSelectionError: true
+            });
+            return;
+        }
+        let studentMapTemp = this.state.studentMap.map((e,i) => {
+            if(e.name === this.state.activeStudent) {
+                e.questions = this.state.tempQuestionArray;
+            }
+            return e;
+        }, this);
+        this.setState({
+            studentMap: studentMapTemp,
+            assignSuccess: true
+        });
+        setTimeout(()=>{
+            localStorage.setItem('studentMap', JSON.stringify(this.state.studentMap));
+            this.setState({
+                assignSuccess: false
+            });
+        }, 3000);
+        return false;
+    }
+    
+
     selectAllCheckbox = (e) => {
-        const questions = this.state.questionList;
+        let questions = this.state.questionList;
         this.setState({
             allSelected: !this.state.allSelected
         });
@@ -141,14 +179,20 @@ class QuestionList extends Component {
             });
         }
         this.setState({
-            questionList: questions
+            questionList: questions,
+            tempQuestionArray: []
         });
+        this.setState({
+            tempQuestionArray: questions
+        });
+
+        return false;
     }
 
     selectedStudent = (e) => {
-        console.log(e.target.value);
         this.setState({
-            activeStudent: e.target.value
+            activeStudent: e.target.value,
+            userAssignError: false
         });
     }
 
@@ -182,16 +226,20 @@ class QuestionList extends Component {
                                 </div>
                             </div>
                             <div className="Button-container">
-                                <button className="Primary-btn mar-1">Assign</button>
+                                <button className="Primary-btn mar-1" onClick={this.assginQuestions.bind(this)}>Assign</button>
                                 <Link to="/QuestionBuilder"><button className="Secondary-btn">Author New Question</button></Link>
                             </div>
                         </div>
                     </div>
                     {this.state.activeStudent ? <div className="Active-stundent">Active Student Profile: {this.state.activeStudent}</div> : null}
-                    {this.state.questionList.map(function (item, index) {
+                    {(this.state.userAssignError) ? <div className="Error-msg">Select a student to assing first</div> : null}
+                    {(this.state.noSelectionError) ? <div className="Error-msg">Select a Question Selected to assing first</div> : null}
+                    {(this.state.assignSuccess) ? <div className="Error-msg">Questions assinged sucessfully</div> : null}
+                    
+                    {this.state.questionList.map( (item, index)=> {
                         return (<div className="Selection-rows" key={item.id.toString()}>
                             <div className="selection-check">
-                                <label><input type="checkbox" value={item.id.toString()} checked={item.isChecked} /></label>
+                                <label><input type="checkbox" value={item.id.toString()} checked={item.isChecked} onChange={this.singleCheckBoxSelection.bind(this)}/></label>
                             </div>
                             <div className="course-info-bar">
                                 <div className="serial-col">
