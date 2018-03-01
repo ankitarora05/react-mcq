@@ -138,13 +138,14 @@ class QuestionList extends Component {
     };
 
     assginQuestions = () => {
+        const oldStudentMap = JSON.parse(localStorage.getItem('studentMap'));
         if(this.state.tempQuestionArray.length === 0) {
             this.setState({
                 noSelectionError: true
             });
             return;
         }
-        let studentMapTemp = this.state.studentMap.map((e,i) => {
+        let studentMapTemp = oldStudentMap.map((e,i) => {
             if(e.name === this.state.activeStudent) {
                 e.questions = this.state.tempQuestionArray;
             }
